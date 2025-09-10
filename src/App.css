@@ -1,0 +1,99 @@
+.App {
+  text-align: center;
+  z-index: 1;
+}
+
+/* Custom Theme Switch Styles */
+.custom-theme-switch-container .form-check-input {
+  width: 3.5em;  /* Make the switch wider */
+  height: 1.75em; /* Make the switch taller */
+  cursor: pointer;
+  /* The background-image is an SVG, let's ensure it scales okay or adjust if needed */
+  background-size: contain; /* Or try 'auto', or a specific pixel value if 'contain' isn't perfect */
+  
+  /* Smooth transition for background color and the thumb's position */
+  transition: background-color 0.3s ease-in-out, background-position 0.3s ease-in-out;
+}
+
+.custom-theme-switch-container .form-check-input:focus {
+  /* Optional: custom focus style if Bootstrap's default isn't prominent enough with the new size */
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Example Bootstrap focus color */
+}
+
+.custom-theme-switch-container .form-check-input:checked {
+  /* Ensure the thumb moves to the correct position for the larger switch */
+  /* The default background-position might be fine, but adjust if the thumb isn't fully to the right */
+  background-position: right center;
+}
+
+/* Style the label to align better with the larger switch */
+.custom-theme-switch-container .form-check-label {
+  padding-left: 0.75em; /* Increase padding to give space from the larger switch */
+  font-size: 1.05em; /* Slightly larger label text */
+  line-height: 1.75em; /* Align text vertically with the switch */
+  cursor: pointer;
+}
+
+.custom-theme-switch-container:hover .form-check-input {
+  border-color: #86b7fe;
+}
+
+/* Glassmorphism styles for the Navbar */
+.navbar-glass {
+  /* Core glassmorphism effect */
+  background: rgba(30, 30, 45, 0.6); /* Semi-transparent background. Adjust color and opacity as needed. This is a slightly dark, desaturated blue. */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+
+  /* Optional enhancements */
+  border-radius: 0 0 15px 15px; /* Rounded bottom corners if you like */
+  border: 1px solid rgba(255, 255, 255, 0.12); /* Subtle border */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+
+  /* Ensure it sits above other content if necessary, though your .App z-index might handle this */
+  position: sticky; /* Makes the navbar stick to the top */
+  top: 0;
+  z-index: 1000; /* Ensure it's above other page content but below modals if any */
+}
+
+/* Adjust text colors for readability on the glass background */
+.navbar-glass .navbar-brand,
+.navbar-glass .nav-link {
+  color: #f0f0f0 !important; /* Light color for text. Use !important if Bootstrap overrides are strong */
+}
+
+.navbar-glass .navbar-brand:hover,
+.navbar-glass .nav-link:hover {
+  color: #ffffff !important;
+}
+
+/* Style for the link container */
+.hover-underline-golden {
+  position: relative; /* Needed for the ::after pseudo-element to be positioned relative to the link */
+  overflow: hidden; /* Optional: Hides the underline if it slightly overshoots during animation */
+  display: inline-block; /* Ensure the link behaves like a block for width/positioning */
+  /* You might need to adjust padding/margin here if the underline is too close to text */
+}
+
+/* Initial state of the pseudo-element (the underline) */
+.hover-underline-golden::after {
+  content: ''; /* Required for pseudo-elements */
+  position: absolute; /* Position relative to the parent (.hover-underline-golden) */
+  bottom: 0; /* Position at the bottom */
+  left: 0; /* Start from the left */
+  width: 0; /* Start with zero width (invisible) */
+  height: 2px; /* Thickness of the underline */
+  background-color: gold; /* The golden color */
+  transition: width 0.3s ease; /* Smooth transition for the width change */
+}
+
+/* State of the pseudo-element on hover */
+.hover-underline-golden:hover::after {
+  width: 100%; /* Expand to full width on hover */
+}
+
+/* Optional: Adjust color on hover if needed, though the underline handles the effect */
+/* You might already have this from Bootstrap's nav-link hover styles */
+.hover-underline-golden:hover {
+  color: inherit; /* Or a specific hover color if you want the text to change too */
+}
